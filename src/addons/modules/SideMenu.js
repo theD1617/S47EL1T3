@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 class SideMenu extends Component {
 
     componentDidMount(){
-        this.props.getClients();
+       
     }
 
     render() { 

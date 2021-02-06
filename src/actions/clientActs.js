@@ -4,7 +4,7 @@ import {GET_CLIENTS, GET_CLIENT, ADD_CLIENT, EDIT_CLIENT, DEL_CLIENT, CLIENTS_LO
 export const getClients = () => dispatch => {
     console.log("GET_CLIENTS ACTION")
     dispatch(itemsLoading());
-    axios.get('https://eli73.herokuapp.com/clients/list').then(res => dispatch({
+    axios.get('https://diamesos.herokuapp.com/clients/list').then(res => dispatch({
         type: GET_CLIENTS,
         payload: res.data
     }))

@@ -9,9 +9,13 @@ class LogRegModule extends Component {
     componentDidMount(){
         
     }
-
+     
     render() { 
         const { isLogged } = this.props;
+        const onChange = (e) => {
+            console.log("typed");
+    
+        } 
         return ( 
             <div>
             <Form>
@@ -28,7 +32,7 @@ class LogRegModule extends Component {
             <br/>
             Registrieren<br/><br/>
             <InputGroup>
-            <Input placeholder="Vorname" ></Input>
+            <Input placeholder="Vorname" onChange={onChange()}></Input>
             <Input placeholder="Nachname" ></Input>
             </InputGroup><InputGroup>
             <Input placeholder="Geburtsjahr"></Input>

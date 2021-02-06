@@ -28,8 +28,8 @@ class Sidebar extends Component {
 
 Sidebar.propTypes = {
     getClients: PropTypes.func.isRequired,
-    client: PropTypes.object.isRequired,
-    isLogged: PropTypes.bool.isRequired
+    client: PropTypes.object,
+    isLogged: PropTypes.bool
 }
 
 const mapStateToProps = (state) => ({
