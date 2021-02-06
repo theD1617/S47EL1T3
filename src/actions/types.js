@@ -1,4 +1,5 @@
 export const ITEMS_LOADING = 'ITEMS_LOADING';
+export const CLIENTS_LOADING = 'CLIENTS_LOADING';
 
 export const GET_ITEM = 'GET_ITEM';
 export const GET_ITEMS = 'GET_ITEMS';
@@ -7,6 +8,7 @@ export const EDIT_ITEM = 'EDIT_ITEM';
 export const DEL_ITEM = 'DEL_ITEM';
 
 export const GET_CLIENT = 'GET_CLIENT';
+export const LOG_CLIENT = 'LOG_CLIENT';
 export const GET_CLIENTS = 'GET_CLIENTS';
 export const ADD_CLIENT = 'ADD_CLIENT';
 export const EDIT_CLIENT = 'EDIT_CLIENT';

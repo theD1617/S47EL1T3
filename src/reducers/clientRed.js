@@ -1,23 +1,23 @@
-import {GET_ITEMS, GET_ITEM, ADD_ITEM, EDIT_ITEM, DEL_ITEM, ITEMS_LOADING} from '../actions/types';
+import {GET_CLIENTS, GET_CLIENT, ADD_CLIENT, EDIT_CLIENT, DEL_CLIENT, CLIENTS_LOADING} from '../actions/types';
 
 const initialState = {
-    items:[],
-    it_loading: false
+    clients:[],
+    cl_loading: false
 }
 
 export default function(state = initialState, action) {
     switch(action.type) {
-        case GET_ITEMS :
+        case GET_CLIENTS :
             console.log("GET_ITEMS REDUCER")
             return {
                 ...state,
-                items: action.payload,
-                it_loading: false
+                clients: action.payload,
+                cl_loading: false
             }
-        case ITEMS_LOADING :
+        case CLIENTS_LOADING :
             return {
                 ...state,
-                it_loading: true
+                cl_loading: true
             } 
         default:
             return state;
