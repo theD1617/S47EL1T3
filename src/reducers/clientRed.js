@@ -2,7 +2,8 @@ import {GET_CLIENTS, GET_CLIENT, ADD_CLIENT, EDIT_CLIENT, DEL_CLIENT, CLIENTS_LO
 
 const initialState = {
     clients:[],
-    cl_loading: false
+    cl_loading: false,
+    isLogged: false
 }
 
 export default function(state = initialState, action) {

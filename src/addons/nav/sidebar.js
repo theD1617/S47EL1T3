@@ -5,13 +5,17 @@ import { getClients } from '../../actions/clientActs';
 import PropTypes from 'prop-types';
 
 class Sidebar extends Component {
+
     componentDidMount(){
         this.props.getClients();
     }
-    render() { 
-        return ( 
 
+    render() { 
+        const { isLogged } = this.props;
+        return ( 
+            
             <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                {isLogged ? (
                 <div className="position-sticky pt-3">
                     <ListGroup className="nav flex-column">
                     <ListGroupItem className="nav-item">
@@ -73,18 +77,21 @@ class Sidebar extends Component {
                     </ListGroupItem>
                     </ListGroup>
                 </div>
-            </nav>
+                ) : null}
+            </nav> 
          );
     }
 }
 
 Sidebar.propTypes = {
     getClients: PropTypes.func.isRequired,
-    client: PropTypes.object.isRequired
+    client: PropTypes.object.isRequired,
+    isLogged: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = (state) => ({
-    client: state.client
+    client: state.client,
+    isLogged: state.isLogged
 });
  
 export default connect(mapStateToProps,{ getClients })(Sidebar);
