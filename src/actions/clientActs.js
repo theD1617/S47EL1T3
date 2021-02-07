@@ -16,7 +16,7 @@ export const loadClient = () => (dispatch, getState) => {
     const token = getState().client.token;
     const config = {headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*"}};
     config.headers['auth-token'] = token;
-    axios.get(`https://eli73.herokuapp.com/clients/one/601f0a575b76790015c4a9f8`,config)
+    axios.get(`https://eli73.herokuapp.com/clients/one/601c9d9ee2ed23f27b649793`,config)
     .then(res => dispatch({
         type: CLIENT_LOADED,
         payload: res.data
@@ -46,7 +46,7 @@ export const doLog = log => dispatch => {
 
 };
 export const doReg = reg => dispatch => {
-    const config = {headers: {"Content-Type": "application/json"}};
+    const config = {headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*"}};
     const body = JSON.stringify(reg);
     axios.post('https://eli73.herokuapp.com/clients/sign',body,config)
     .then(res => dispatch({
