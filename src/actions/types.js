@@ -1,5 +1,15 @@
 export const ITEMS_LOADING = 'ITEMS_LOADING';
 export const CLIENTS_LOADING = 'CLIENTS_LOADING';
+export const CLIENT_LOADING = 'CLIENT_LOADING';
+export const CLIENT_LOADED = 'CLIENT_LOADED';
+export const AUTH_ERROR = 'AUTH_ERROR';
+export const LOG_SUCCESS = 'LOG_SUCCESS';
+export const LOG_FAIL = 'LOG_FAIL';
+export const EXIT_SUCCESS = 'EXIT_SUCCESS';
+export const REG_SUCCESS = 'REG_SUCCESS';
+export const REG_FAIL = 'REG_FAIL';
+export const GET_ERRORS = 'GET_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const GET_ITEM = 'GET_ITEM';
 export const GET_ITEMS = 'GET_ITEMS';
@@ -9,6 +19,11 @@ export const DEL_ITEM = 'DEL_ITEM';
 
 export const GET_CLIENT = 'GET_CLIENT';
 export const LOG_CLIENT = 'LOG_CLIENT';
+export const REG_CLIENT = 'REG_CLIENT';
+export const ACT_CLIENT = 'ACT_CLIENT';
+export const PIN_REC_CLIENT = 'PIN_REC_CLIENT';
+export const NIK_REC_CLIENT = 'NIK_REC_CLIENT';
+export const ACT_PREP_CLIENT = 'ACT_PREP_CLIENT';
 export const GET_CLIENTS = 'GET_CLIENTS';
 export const ADD_CLIENT = 'ADD_CLIENT';
 export const EDIT_CLIENT = 'EDIT_CLIENT';

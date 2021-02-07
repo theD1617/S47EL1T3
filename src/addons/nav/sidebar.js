@@ -13,14 +13,14 @@ class Sidebar extends Component {
     }
 
     render() { 
-        const { isLogged } = this.props;
+        const { isLogged, clients } = this.props;
         return ( 
             
             <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 {isLogged ? (
                     <SideMenu />
                 ) : 
-                (<LogRegModule /> )}
+                (<LogRegModule clients={clients} /> )}
             </nav> 
          );
     }
