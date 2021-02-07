@@ -16,7 +16,7 @@ export const loadClient = () => (dispatch, getState) => {
     const token = getState().client.token;
     const config = {headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*"}};
     config.headers['auth-token'] = token;
-    axios.get(`https://eli73.herokuapp.com/clients/one/601c9d9ee2ed23f27b649793`,config)
+    axios.get(`https://eli73.herokuapp.com/clients/list`,config)
     .then(res => dispatch({
         type: CLIENT_LOADED,
         payload: res.data
@@ -36,7 +36,9 @@ export const getClients = () => dispatch => {
 };
 export const doLog = log => dispatch => {
     console.log("LOG_CLIENT ACTION");
-    axios.post('https://eli73.herokuapp.com/clients/log').then(res => dispatch({
+    const config = {headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*", "foo": "ya"}};
+    const body = JSON.stringify(log);
+    axios.post('https://eli73.herokuapp.com/clients/log',body, config).then(res => dispatch({
         type: LOG_CLIENT,
         payload: res.data
     })).catch(err => {
@@ -46,9 +48,9 @@ export const doLog = log => dispatch => {
 
 };
 export const doReg = reg => dispatch => {
-    const config = {headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*"}};
+    const config = {headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*", "foo": "ya"}};
     const body = JSON.stringify(reg);
-    axios.post('https://eli73.herokuapp.com/clients/sign',body,config)
+    axios.post('https://eli73.herokuapp.com/clients/sign',body, config)
     .then(res => dispatch({
         type: REG_SUCCESS,
         payload:res.data
