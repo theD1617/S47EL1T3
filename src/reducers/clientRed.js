@@ -34,17 +34,19 @@ export default function(state = initialState, action) {
                 ...state,
                 cl_auth: true,
                 cl_loading: false,
-                user: action.payload
+                client: action.payload
             };
         case LOG_SUCCESS :
+        case LOG_CLIENT :
         case REG_SUCCESS :
             localStorage.setItem('token', action.payload.token);
-            console.log(action.payload)
+            console.log(action.payload.client);
             return {
                 ...state,
                 ...action.payload,
                 cl_auth: true,
-                cl_loading: false                
+                cl_loading: false,
+                isLogged: true             
             };
         case LOG_FAIL :
         case REG_FAIL :

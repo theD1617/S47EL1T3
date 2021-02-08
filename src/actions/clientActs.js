@@ -41,7 +41,7 @@ export const doLog = log => dispatch => {
     const config = {headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*",}};
     const body = JSON.stringify(log);
     axios.post('https://eli73.herokuapp.com/clients/log',body, config).then(res => {
-        console.log(res);
+        console.log("DONE LOG client => "+res.data.client._id+" token => "+res.data.token);
         dispatch({
         type: LOG_CLIENT,
         payload: res.data

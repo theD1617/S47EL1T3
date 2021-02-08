@@ -20,7 +20,7 @@ class Sidebar extends Component {
                 {isLogged ? (
                     <SideMenu />
                 ) : 
-                (<div><LogRegModule clients={clients} /><SideMenu /></div> )}
+                (<div><LogRegModule clients={clients} /></div> )}
             </nav> 
          );
     }
@@ -34,7 +34,7 @@ Sidebar.propTypes = {
 
 const mapStateToProps = (state) => ({
     client: state.client,
-    isLogged: state.isLogged
+    isLogged: state.client.isLogged
 });
  
 export default connect(mapStateToProps,{ getClients })(Sidebar);
