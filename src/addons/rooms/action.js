@@ -2,18 +2,31 @@ import React, { Component } from 'react';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { connect } from 'react-redux';
 import { getItems } from '../../actions/itemActs';
+import { getClients } from '../../actions/clientActs';
 import PropTypes from 'prop-types';
 
 class Action extends Component {
     
     componentDidMount(){
+        this.props.getClients();
         this.props.getItems();
     }
 
     render() { 
+        const {clients} = this.props.client;
         const {items} = this.props.item;
-        return ( 
-            <div className="table-responsive">
+        return (<div className="row">
+            <div className="table-responsive col-6">
+                <ListGroup className="list-group container-fluid">
+                {clients.map(client => (
+                    <ListGroupItem key={client._id}  className="list-group-item" >
+                    {client.nik+" | "+client.age+" - "+client._ehash+' :: '+client._id}
+                    </ListGroupItem>
+                ))}
+                </ListGroup>
+
+            </div>
+            <div className="table-responsive col-6">
                 <ListGroup className="list-group container-fluid">
                 {items.map(item => (
                     <ListGroupItem key={item._id}  className="list-group-item" >
@@ -23,17 +36,21 @@ class Action extends Component {
                 </ListGroup>
 
             </div>
+            </div>
          );
     }
 }
 
 Action.propTypes = {
     getItems: PropTypes.func.isRequired,
-    item: PropTypes.object.isRequired
+    getClients: PropTypes.func.isRequired,
+    item: PropTypes.object.isRequired,
+    client: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
-    item: state.item
+    item: state.item,
+    client: state.client
 });
  
-export default connect(mapStateToProps, { getItems })(Action);
+export default connect(mapStateToProps, { getItems,getClients })(Action);

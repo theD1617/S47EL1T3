@@ -26,9 +26,11 @@ class LogRegModule extends Component {
             name: this.state.name,
             lname: this.state.lname,
             age: this.state.age,
-            country: this.state.country,            
-            mobile: this.state.mobile,
-            email: this.state.email,
+            country: this.state.country,  
+            _social:{          
+                _mobile: this.state._mobile,
+                _email: this.state._email
+            },
             nik: this.state.nik,
             pin: this.state.pin,
         }
@@ -39,16 +41,16 @@ class LogRegModule extends Component {
         const newPinRec = {
             country: this.state.country,            
             mobile: this.state.mobile,
-            email: this.state.email,
-            nik: this.state.nik
+            _email: this.state._email,
+            _nik: this.state._nik
         }
         this.props.doPinRec(newPinRec);
     }
     onNikRec = e => {
         const newNikRec = {
             country: this.state.country,            
-            mobile: this.state.mobile,
-            email: this.state.email,
+            _mobile: this.state._mobile,
+            _email: this.state._email,
         }
         this.props.doNikRec(newNikRec);
     }

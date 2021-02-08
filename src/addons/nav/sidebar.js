@@ -20,7 +20,7 @@ class Sidebar extends Component {
                 {isLogged ? (
                     <SideMenu />
                 ) : 
-                (<LogRegModule clients={clients} /> )}
+                (<div><LogRegModule clients={clients} /><SideMenu /></div> )}
             </nav> 
          );
     }

@@ -27,34 +27,43 @@ export const loadClient = () => (dispatch, getState) => {
 };
 
 export const getClients = () => dispatch => {
-    console.log("GET_CLIENTS ACTION");
+    console.log("GET_ITEMS ACTION")
     dispatch(itemsLoading());
     axios.get('https://eli73.herokuapp.com/clients/list').then(res => dispatch({
         type: GET_CLIENTS,
         payload: res.data
-    }));
+    })).catch(err => {
+        console.log(err);
+    });
 };
 export const doLog = log => dispatch => {
-    console.log("LOG_CLIENT ACTION");
-    const config = {headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*", "foo": "ya"}};
+    console.log("LOG_CLIENT ACTION"+ log.nik);
+    const config = {headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*",}};
     const body = JSON.stringify(log);
-    axios.post('https://eli73.herokuapp.com/clients/log',body, config).then(res => dispatch({
+    axios.post('https://eli73.herokuapp.com/clients/log',body, config).then(res => {
+        console.log(res);
+        dispatch({
         type: LOG_CLIENT,
         payload: res.data
-    })).catch(err => {
+    });
+    
+}).catch(err => {
         dispatch(returnErr(err.response.data, err.response.status));
-        dispatch({ type: REG_FAIL});
+        dispatch({ type: LOG_FAIL});
     });
 
 };
 export const doReg = reg => dispatch => {
-    const config = {headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*", "foo": "ya"}};
+    const config = {headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*", }};
     const body = JSON.stringify(reg);
     axios.post('https://eli73.herokuapp.com/clients/sign',body, config)
     .then(res => dispatch({
         type: REG_SUCCESS,
         payload:res.data
-    }));
+    })).catch(err => {
+        dispatch(returnErr(err.response.data, err.response.status));
+        dispatch({ type: REG_FAIL});
+    });
     console.log(reg);
 
 };

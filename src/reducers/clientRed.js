@@ -18,7 +18,8 @@ const initialState = {
     cl_auth: null,
     cl_loading: false,
     isLogged: false,
-    client: null
+    client: null,
+    clients:[]
 };
 
 export default function(state = initialState, action) {
@@ -38,7 +39,7 @@ export default function(state = initialState, action) {
         case LOG_SUCCESS :
         case REG_SUCCESS :
             localStorage.setItem('token', action.payload.token);
-            console.log(action.payload.token)
+            console.log(action.payload)
             return {
                 ...state,
                 ...action.payload,
@@ -57,6 +58,13 @@ export default function(state = initialState, action) {
                 cl_auth: false,
                 cl_loading: false
             };
+        case GET_CLIENTS :
+            console.log("GET_ITEMS REDUCER")
+            return {
+                ...state,
+                clients: action.payload,
+                cl_loading: false
+            }
         default:
             return state;
     }
