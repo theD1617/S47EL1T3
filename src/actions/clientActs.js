@@ -49,6 +49,7 @@ export const doLog = log => dispatch => {
     
 }).catch(err => {
         dispatch(returnErr(err.response.data, err.response.status));
+        
         dispatch({ type: LOG_FAIL});
     });
 

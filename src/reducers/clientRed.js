@@ -43,7 +43,8 @@ export default function(state = initialState, action) {
             console.log(action.payload.client);
             return {
                 ...state,
-                ...action.payload,
+                token: action.payload.token,
+                client: action.payload.client,
                 cl_auth: true,
                 cl_loading: false,
                 isLogged: true             

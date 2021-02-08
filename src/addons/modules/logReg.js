@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input, Button, InputGroup } from 'reactstrap';
+import { Form, Input, Button, InputGroup,Alert } from 'reactstrap';
 import { connect } from 'react-redux';
 import { doLog, doReg, doPinRec, doNikRec, doAct } from '../../actions/clientActs';
 import PropTypes from 'prop-types';
@@ -63,12 +63,14 @@ class LogRegModule extends Component {
         this.props.doAct(newAct);
     }
     render() { 
-       
+        let msg = "Bitte loggen Sie sich ein ...";
+        let col = "alert alert-info";
+       if(this.props.err.status !== null){ msg = this.props.err.msg; col = "alert alert-danger"; }
         return ( 
             <div>
             <Form onSubmit={this.onLog} >
-                <br/>
-                Einloggen<br/><br/>
+                
+                <Alert id="logalerts" className={col}>{msg}</Alert>
                 <InputGroup>
                 <Input type="text" placeholder="Benutzername" onChange={this.onChange} id="nik" name="nik"/>
                 <Input type="password" placeholder="Passwort" onChange={this.onChange} id="pin" name="pin" />
@@ -107,11 +109,12 @@ LogRegModule.propTypes = {
     doReg:  PropTypes.func.isRequired, 
     doPinRec:  PropTypes.func.isRequired, 
     doNikRec:  PropTypes.func.isRequired, 
-    doAct:  PropTypes.func.isRequired 
+    doAct:  PropTypes.func.isRequired,
+    err: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
-
+    err: state.err
 });
  
 export default connect(mapStateToProps,{ doLog, doReg, doPinRec, doNikRec, doAct })(LogRegModule);
