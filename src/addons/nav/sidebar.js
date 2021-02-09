@@ -9,7 +9,7 @@ import SideMenu from '../modules/SideMenu';
 class Sidebar extends Component {
 
     componentDidMount() {
-        this.props.getClients();
+          this.props.getClients();
     }
 
     render() {

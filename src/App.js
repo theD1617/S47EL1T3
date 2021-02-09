@@ -13,7 +13,7 @@ import { loadClient } from './actions/clientActs';
 class App extends Component {
 
   componentDidMount() {
-    if (store.getState().client.token) store.dispatch(loadClient());
+    store.dispatch(loadClient());
   }
 
   render() {

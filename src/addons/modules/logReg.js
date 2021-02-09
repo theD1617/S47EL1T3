@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Input, Button, InputGroup, Alert } from 'reactstrap';
 import { connect } from 'react-redux';
 import { doLog, doReg, doPinRec, doNikRec, doAct } from '../../actions/clientActs';
+import { returnErr, clearErr } from '../../actions/errActs';
 import PropTypes from 'prop-types';
 
 class LogRegModule extends Component {
@@ -66,7 +67,8 @@ class LogRegModule extends Component {
 
         let msg = "Bitte loggen Sie sich ein ...";
         let col = "alert alert-info";
-        if (this.props.err.status !== null) { msg = this.props.err.msg; col = "alert alert-danger"; }
+        console.log(this.props.err);
+        // if (this.props.err.msg !== null) { msg = this.props.err.msg; col = "alert alert-danger"; }
 
         return (
             <div>
@@ -112,11 +114,13 @@ LogRegModule.propTypes = {
     doPinRec: PropTypes.func.isRequired,
     doNikRec: PropTypes.func.isRequired,
     doAct: PropTypes.func.isRequired,
-    err: PropTypes.object.isRequired
+    err: PropTypes.object.isRequired,
+    returnErr: PropTypes.func.isRequired,
+    clearErr: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
     err: state.err
 });
 
-export default connect(mapStateToProps, { doLog, doReg, doPinRec, doNikRec, doAct })(LogRegModule);
+export default connect(mapStateToProps, { doLog, doReg, doPinRec, doNikRec, doAct, returnErr, clearErr })(LogRegModule);

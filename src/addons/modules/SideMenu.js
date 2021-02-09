@@ -7,9 +7,6 @@ import PropTypes from 'prop-types';
 
 class SideMenu extends Component {
 
-    componentDidMount() {
-
-    }
 
     render() {
         const { isLogged } = this.props;

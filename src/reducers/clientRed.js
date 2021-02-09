@@ -14,15 +14,15 @@ import {
 } from '../actions/types';
 
 
-    const initialState = {
-        token: localStorage.getItem('token'),
-        cl_auth: null,
-        cl_loading: false,
-        isLogged: false,
-        client: null,
-        clients: []
-    };
-    
+const initialState = {
+    token: localStorage.getItem('token'),
+    cl_auth: null,
+    cl_loading: false,
+    isLogged: false,
+    client: null,
+    clients: []
+};
+
 export default function (state = initialState, action) {
     switch (action.type) {
         case CLIENT_LOADING:
@@ -63,6 +63,7 @@ export default function (state = initialState, action) {
                 client: null,
                 cl_auth: false,
                 cl_loading: false,
+                clients: [],
                 isLogged: false
             };
         case GET_CLIENTS:
