@@ -9,7 +9,7 @@ import {
     LOG_FAIL, EXIT_SUCCESS, REG_SUCCESS,
     REG_FAIL
 } from '../actions/types';
-import { returnErr } from './errActs';
+import { returnErr, clearErr } from './errActs';
 const HOST = process.env.REACT_APP_API_HOST;
 
 export const loadClient = () => (dispatch, getState) => {
@@ -21,17 +21,21 @@ export const loadClient = () => (dispatch, getState) => {
     const config = {
         headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
         }
     };
     if (token) config.headers['auth-token'] = token;
     console.log(config);
     axios.get(`${HOST}/clients/auth`, config)
-        .then(res => dispatch({
-            type: CLIENT_LOADED,
-            payload: res.data
-        })).catch(err => {
-            console.log(err);
-            // dispatch(returnErr(err.res.data, err.res.status));
+        .then(res => {
+            dispatch({
+                type: CLIENT_LOADED,
+                payload: res.data
+            });
+            console.log(res);
+        }).catch(err => {
+            console.log(err.response.data, err.response.status);
+            dispatch(returnErr(err.response.data, err.response.status));
             dispatch({ type: AUTH_ERROR });
         });
 };
@@ -52,27 +56,10 @@ export const getClients = () => (dispatch, getState) => {
         type: GET_CLIENTS,
         payload: res.data
     })).catch(err => {
-        // console.log(err);
-    });
-};
-export const autoLog = log => (dispatch, getState) => {
-    console.log("LOG_CLIENT ACTION" + log.nik);
-    const config = { headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*", } };
-    const body = JSON.stringify(log);
-    axios.post(`${HOST}/clients/log`, body, config).then(res => {
-        console.log("DONE LOG client => " + res.data.client._id + " token => " + res.data.token);
-        dispatch({
-            type: LOG_CLIENT,
-            payload: res.data
-        });
-
-    }).catch(err => {
         dispatch(returnErr(err.response.data, err.response.status));
-
-        dispatch({ type: LOG_FAIL });
     });
-
 };
+
 export const doLog = log => dispatch => {
     console.log("LOG_CLIENT ACTION" + log.nik);
     const config = { headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*", } };
@@ -98,7 +85,8 @@ export const doReg = reg => dispatch => {
         .then(res => dispatch({
             type: REG_SUCCESS,
             payload: res.data
-        })).catch(err => {
+        })
+        ).catch(err => {
             dispatch(returnErr(err.response.data, err.response.status));
             dispatch({ type: REG_FAIL });
         });
@@ -116,6 +104,11 @@ export const doAct = act => {
 };
 export const doPrep = prep => {
 
+};
+export const exit = () => dispatch => {
+    dispatch({
+        type: CLIENT_LOADED
+    });
 };
 
 export const clientsLoading = () => {

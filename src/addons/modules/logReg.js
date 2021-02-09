@@ -10,6 +10,7 @@ class LogRegModule extends Component {
     onChange = e => {
         this.setState({ [e.target.name]: e.target.value });
         console.log(e.target.value);
+
     };
 
     onLog = e => {
@@ -19,6 +20,7 @@ class LogRegModule extends Component {
             pin: this.state.lpin,
         }
         this.props.doLog(newLog);
+        this.props.clearErr();
         console.log("ON_LOG ACTION" + newLog.nik)
     };
     onReg = e => {
@@ -65,16 +67,11 @@ class LogRegModule extends Component {
     }
     render() {
 
-        let msg = "Bitte loggen Sie sich ein ...";
-        let col = "alert alert-info";
-        console.log(this.props.err);
-        // if (this.props.err.msg !== null) { msg = this.props.err.msg; col = "alert alert-danger"; }
-
         return (
             <div>
                 <Form onSubmit={this.onLog} >
 
-                    <div id="logalerts" className={col} >{msg}</div>
+
                     <InputGroup>
                         <Input type="text" placeholder="Benutzername" onChange={this.onChange} id="lnik" name="lnik" />
                         <Input type="password" placeholder="Passwort" onChange={this.onChange} id="lpin" name="lpin" />

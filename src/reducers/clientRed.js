@@ -20,6 +20,7 @@ const initialState = {
     cl_loading: false,
     isLogged: false,
     client: null,
+    role: null,
     clients: []
 };
 
@@ -47,6 +48,7 @@ export default function (state = initialState, action) {
                 ...state,
                 token: action.payload.token,
                 client: action.payload.client,
+                role: action.payload.client.role,
                 cl_auth: true,
                 cl_loading: false,
                 isLogged: true
@@ -70,8 +72,7 @@ export default function (state = initialState, action) {
             console.log("GET_CLIENTS REDUCER")
             return {
                 ...state,
-                clients: action.payload,
-                cl_loading: false
+                clients: action.payload
             }
         default:
             return state;
