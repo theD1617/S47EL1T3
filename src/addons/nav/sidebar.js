@@ -8,21 +8,22 @@ import SideMenu from '../modules/SideMenu';
 
 class Sidebar extends Component {
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.getClients();
     }
 
-    render() { 
-        const { isLogged, clients } = this.props;
-        return ( 
-            
+    render() {
+        const { token, client, cl_auth } = this.props.client;
+        console.log(client);
+        return (
+
             <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                {isLogged ? (
+                {cl_auth ? (
                     <SideMenu />
-                ) : 
-                (<div><LogRegModule clients={clients} /></div> )}
-            </nav> 
-         );
+                ) :
+                    (<div><LogRegModule /></div>)}
+            </nav>
+        );
     }
 }
 
@@ -36,5 +37,5 @@ const mapStateToProps = (state) => ({
     client: state.client,
     isLogged: state.client.isLogged
 });
- 
-export default connect(mapStateToProps,{ getClients })(Sidebar);
+
+export default connect(mapStateToProps, { getClients })(Sidebar);

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_ITEMS, GET_ITEM, ADD_ITEM, EDIT_ITEM, DEL_ITEM, ITEMS_LOADING} from './types';
+import { GET_ITEMS, GET_ITEM, ADD_ITEM, EDIT_ITEM, DEL_ITEM, ITEMS_LOADING } from './types';
 
 export const getItems = () => dispatch => {
     console.log("GET_ITEMS ACTION")
