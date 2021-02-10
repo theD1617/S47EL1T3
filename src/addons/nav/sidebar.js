@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { ListGroup, ListGroupItem } from 'reactstrap';
+// import { ListGroup, ListGroupItem } from 'reactstrap';
 import { connect } from 'react-redux';
 import { getClients } from '../../actions/clientActs';
 import PropTypes from 'prop-types';
 import LogRegModule from '../modules/logReg';
 import SideMenu from '../modules/SideMenu';
-import { returnErr, clearErr } from '../../actions/errActs';
+import { clearErr } from '../../actions/errActs';
 
 class Sidebar extends Component {
 
@@ -15,7 +15,7 @@ class Sidebar extends Component {
     }
 
     render() {
-        const { token, client, cl_auth } = this.props.client;
+        const { cl_auth } = this.props.client;
         console.log(cl_auth);
         let msg = "...";
         let col = "alert alert-warning";

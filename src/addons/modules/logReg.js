@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input, Button, InputGroup, Alert } from 'reactstrap';
+import { Form, Input, Button, InputGroup } from 'reactstrap';
 import { connect } from 'react-redux';
 import { doLog, doReg, doPinRec, doNikRec, doAct } from '../../actions/clientActs';
 import { returnErr, clearErr } from '../../actions/errActs';
