@@ -16,7 +16,10 @@ class Action extends Component {
         const { clients } = this.props.client;
         const { items } = this.props.item;
         return (<div className="row">
-            <div className="table-responsive col-6">
+            <div className="table-responsive col-6" style={{
+                minWidth: "350px"
+            }
+            } >
                 <ListGroup className="list-group container-fluid">
                     {clients.map(client => (
                         <ListGroupItem key={client._id} className="list-group-item" >
@@ -26,7 +29,10 @@ class Action extends Component {
                 </ListGroup>
 
             </div>
-            <div className="table-responsive col-6">
+            <div className="table-responsive col-6" style={{
+                minWidth: "350px"
+            }
+            } >
                 <ListGroup className="list-group container-fluid">
                     {items.map(item => (
                         <ListGroupItem key={item._id} className="list-group-item" >
@@ -35,8 +41,8 @@ class Action extends Component {
                     ))}
                 </ListGroup>
 
-            </div>
-        </div>
+            </div >
+        </div >
         );
     }
 }
