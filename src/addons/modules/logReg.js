@@ -114,6 +114,16 @@ class LogRegModule extends Component {
                         <Button>Aktivieren</Button>
                     </Form>
                 </div>
+                <div><br />Benutzer bearbeiten
+                <br /><br />
+                    <Form onSubmit={this.onAct} >
+                        <InputGroup>
+                            <Input type="text" placeholder="Benutzer ID" onChange={this.onChange} id="uid" name="uid" />
+                        </InputGroup>
+                        <br />
+                        <Button>Aktivieren</Button>
+                    </Form>
+                </div>
             </div>
         );
     }

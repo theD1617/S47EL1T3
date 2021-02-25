@@ -12,6 +12,11 @@ export const getItems = () => dispatch => {
         console.log(err);
     });
 };
+
+export const getItemQ = () => dispatch => {
+
+};
+
 export const itemsLoading = () => {
     return {
         type: ITEMS_LOADING
